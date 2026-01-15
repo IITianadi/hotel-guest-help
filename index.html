@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Reception</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Analytics (replace G-XXXXXXX) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const room = urlParams.get('room') || 'Unknown';
+
+    gtag('config', 'G-XXXXXXX', {
+      'page_title': 'Room ' + room,
+      'page_path': '/room-' + room
+    });
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 { font-size: 24px; }
+    button {
+      font-size: 18px;
+      padding: 15px 25px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Need Assistance?</h1>
+  <p>You are requesting help from reception.</p>
+
+  <button onclick="openWhatsApp()">Contact Reception on WhatsApp</button>
+
+  <script>
+    function openWhatsApp() {
+      const room = new URLSearchParams(window.location.search).get('room') || 'Unknown';
+      const message = encodeURIComponent(`I am from Room ${room}. I need assistance.`);
+      window.location.href = `https://wa.me/919918317120?text=${message}`;
+    }
+  </script>
+</body>
+</html>
